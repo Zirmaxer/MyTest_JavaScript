@@ -17,13 +17,7 @@
 // Код возьмите из предыдущего домашнего задания
 const numberOfFilms = +prompt ('Сколько фильмов вы уже посмотрели?', '');
 
-if (numberOfFilms < 10) {
-    alert ('Просмотрено довольно мало фильмов');
-} else if (numberOfFilms > 10 && numberOfFilms < 30 ) {
-    alert ('Вы классический зритель');
-} else {
-    alert ('Вы киноман');
-}
+
 
 const personalMovieDB = {
     count: numberOfFilms,
@@ -36,7 +30,24 @@ const personalMovieDB = {
 for (let i = 1; i<3; i++) {
     const   a = prompt ('Один из последних просмотренных фильмов?', ''),
             b = prompt ('На сколько оцените его?', '');
-    personalMovieDB.movies[a] = b;
+
+    if (a != null && b != null && a != '' && a.length < 50) {
+        personalMovieDB.movies[a] = b;
+        console.log ('done');
+    } else {
+        console.log ('Error');
+        i--;
+    }
+}
+
+if (personalMovieDB.count < 10) {
+    console.log ('Просмотрено довольно мало фильмов');
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30 ) {
+    console.log ('Вы классический зритель');
+} else if (personalMovieDB.count > 50) {
+    console.log ('Вы киноман');
+} else {
+    console.log ('Произошла ошибка');
 }
 
 console.log(personalMovieDB);
